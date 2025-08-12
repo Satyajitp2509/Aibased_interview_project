@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1c92d2, #f2fcfe);
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .navbar h1 {
+            font-size: 20px;
+        }
+
+        .navbar a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .main-section {
+            display: flex;
+            height: calc(100% - 80px);
+        }
+
+        .image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 30px 100px 30px 50px;
+        }
+
+        .content h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .option-btn {
+            padding: 15px 25px;
+            background-color: #1c92d2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            width: 200px;
+            text-align: center;
+        }
+
+        .option-btn:hover {
+            background-color: #155f8d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1> Prepmate : The Ultimate Interview Companion</h1>
+        <div>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('register') }}">Register</a>
+            <a href="{{ url_for('login') }}">Logout</a>
+        </div>
+    </div>
+
+    <div class="main-section">
+        <div class="image-container">
+            <img id="slideshow" src="{{ url_for('static', filename='i1.jpg') }}" alt="Interview Prep">
+        </div>
+        <div class="content">
+            <h2>Interview Preparation</h2>
+            <div class="options">
+                <a class="option-btn" href="{{ url_for('text_preparation') }}">By Text</a>
+                <a class="option-btn" href="{{ url_for('mic_preparation') }}">By Microphone</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const images = [
+            "{{ url_for('static', filename='i1.jpg') }}",
+            "{{ url_for('static', filename='i2.jpg') }}",
+            "{{ url_for('static', filename='i3.jpg') }}",
+            "{{ url_for('static', filename='i4.jpg') }}"
+        ];
+
+        let currentIndex = 0;
+        const imgElement = document.getElementById("slideshow");
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            imgElement.src = images[currentIndex];
+        }, 2000); // 2 seconds
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top Companies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6c757d, #f2fcfe);
+            margin: 0;
+            padding-top: 70px; /* space for navbar */
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            z-index: 999;
+            flex-wrap: wrap;
+        }
+
+        .navbar h1 {
+            font-size: 20px;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .navbar-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background 0.3s;
+            white-space: nowrap;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .company-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .company-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .company-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+
+        .company-card h4 {
+            margin-top: 15px;
+            color: #1c92d2;
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar-links {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .navbar h1 {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>AI Interview Prep</h1>
+        <div class="navbar-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('register') }}">Register</a>
+            <a href="{{ url_for('login') }}">Logout</a>
+        </div>
+    </div>
+
+    <h2>Top Companies for All Branches</h2>
+    <div class="company-grid">
+        <div class="company-card">
+            <a href="{{ url_for('company_roles', company_name='TCS') }}">
+                <img src="{{ url_for('static', filename='logos/tcs.jpeg') }}">
+                <h4>TCS</h4>
+            </a>
+        </div>
+        <div class="company-card">
+            <a href="{{ url_for('company_roles', company_name='Infosys') }}">
+                <img src="{{ url_for('static', filename='logos/infosys.png') }}">
+                <h4>Infosys</h4>
+            </a>
+        </div>
+        <div class="company-card">
+            <a href="{{ url_for('company_roles', company_name='L&T') }}">
+                <img src="{{ url_for('static', filename='logos/lt.png') }}">
+                <h4>L&T</h4>
+            </a>
+        </div>
+        <div class="company-card">
+            <a href="{{ url_for('company_roles', company_name='Wipro') }}">
+                <img src="{{ url_for('static', filename='logos/wipro.jpeg') }}">
+                <h4>Wipro</h4>
+            </a>
+        </div>
+        <div class="company-card">
+            <a href="{{ url_for('company_roles', company_name='Reliance Industries') }}">
+                <img src="{{ url_for('static', filename='logos/reliance.png') }}">
+                <h4>Reliance</h4>
+            </a>
+        </div>
+        <div class="company-card">
+            <a href="{{ url_for('company_roles', company_name='Atlas Copco') }}">
+                <img src="{{ url_for('static', filename='logos/atlas_copco.png') }}">
+                <h4>Atlas Copco</h4>
+            </a>
+        </div>
+        <div class="company-card">
+            <a href="{{ url_for('company_roles', company_name='Altair') }}">
+                <img src="{{ url_for('static', filename='logos/altair.png') }}">
+                <h4>Altair</h4>
+            </a>
+        </div>
+        <div class="company-card">
+            <a href="{{ url_for('company_roles', company_name='Centrio') }}">
+                <img src="{{ url_for('static', filename='logos/centrio.png') }}">
+                <h4>Centrio</h4>
+            </a>
+        </div>
+        <div class="company-card">
+            <a href="{{ url_for('company_roles', company_name='KPIT') }}">
+                <img src="{{ url_for('static', filename='logos/kpit.jpg') }}">
+                <h4>KPIT</h4>
+            </a>
+        </div>
+        <div class="company-card">
+            <a href="{{ url_for('company_roles', company_name='Brillio') }}">
+                <img src="{{ url_for('static', filename='logos/brillio.png') }}">
+                <h4>Brillio</h4>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ company_name }} Roles</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #eef2f3, #8e9eab);
+            margin: 0;
+            padding: 50px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+
+        li {
+            background-color: #ffffff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+        }
+
+        li a {
+            display: block;
+            text-decoration: none;
+            color: #34495e;
+        }
+
+        li:hover {
+            background-color: #ecf0f1;
+        }
+
+        p {
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        a.back-link {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #3498db;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+
+        a.back-link:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h2>Available Roles at {{ company_name }}</h2>
+    <ul>
+        {% for role in roles %}
+            <li>
+                <a href="{{ url_for('role_chat', company_name=company_name, role_name=role[0]) }}">
+                    {{ role[0] }}
+                </a>
+            </li>
+        {% else %}
+            <p>No roles available for this company yet.</p>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('text_preparation') }}" class="back-link">Back to Companies</a>
+</body>
+</html>

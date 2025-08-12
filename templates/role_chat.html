@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ role_name }} Interview</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 40px;
+            background: #f0f4f8;
+        }
+
+        .chat-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .question, .answer {
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .result {
+            background: #dff0d8;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            color: #3c763d;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-box">
+        <h2>{{ company_name }} - {{ role_name }}</h2>
+        <div class="question"><strong>Question:</strong> {{ question }}</div>
+        <form method="POST">
+            <input type="hidden" name="question" value="{{ question }}">
+            <textarea name="user_answer" required placeholder="Type your answer here...">{{ user_answer if user_answer }}</textarea>
+            <br><br>
+            <button type="submit">Submit</button>
+        </form>
+        {% if evaluation %}
+            <div class="result">
+                <strong>Evaluation:</strong><br>
+                {{ evaluation }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
